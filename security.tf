@@ -1,7 +1,7 @@
 resource "aws_security_group" "ecs_tasks" {
   name        = "nodejs-app-ecs-tasks"
   description = "Allow inbound access from ALB only"
-  vpc_id      = aws_vpc.main.id
+  vpc_id      = aws_vpc.main.id # var.vpc_id
 
   ingress {
     protocol        = "tcp"
@@ -22,7 +22,7 @@ resource "aws_security_group" "ecs_tasks" {
 resource "aws_security_group" "vpc_endpoint" {
   name        = "vpc-endpoint-sg"
   description = "Security group for VPC endpoints"
-  vpc_id      = aws_vpc.main.id
+  vpc_id      = aws_vpc.main.id # var.vpc_id
 
   ingress {
     description = "HTTPS from VPC"

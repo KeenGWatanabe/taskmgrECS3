@@ -42,7 +42,7 @@ resource "aws_ecs_task_definition" "app" {
     environment = [
       {
         name  = "MONGODB_ATLAS_URI"
-        value = var.mongodb_uri
+        value = var.MONGO_URI
       }
     ]
     logConfiguration = {

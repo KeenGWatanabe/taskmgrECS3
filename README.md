@@ -1,8 +1,11 @@
+# this terraforms one Container for app, IGW (pub subnets) NAT (pte subnets)
 modules/ecs/
-├── main.tf [vpc, alb, iam, security] # Primary ECS resources
+├── main.tf [vpc, nat, alb, iam, security] # Primary ECS resources
 ├── variables.tf     # Input variables
 ├── outputs.tf       # Output values
 └── README.md        # Documentation
+
+# for production will spin up backen S3
 
 # build and push a new Docker image
 docker build -t your-app-name .
