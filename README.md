@@ -14,3 +14,19 @@ docker push your-account-id.dkr.ecr.us-east-1.amazonaws.com/your-app-name:latest
 
 # new deployment in ECS
 aws ecs update-service --cluster nodejs-app-cluster --service nodejs-app-service --force-new-deployment
+
+Manual cleanup sequence:
+
+Delete load balancers
+
+Delete NAT gateways
+
+Release Elastic IPs
+
+Delete subnets
+
+Delete route tables
+
+Delete internet gateways
+
+Finally delete VPC
