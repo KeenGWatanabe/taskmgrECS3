@@ -19,7 +19,7 @@ resource "aws_nat_gateway" "nat" {
 
 # Private route table with NAT gateway route
 resource "aws_route_table" "private" {
-  vpc_id = aws_vpc.main.id
+  vpc_id = aws_vpc.main.id #var.vpc_id 
   
   route {
     cidr_block     = "0.0.0.0/0"
@@ -38,7 +38,7 @@ resource "aws_route_table_association" "private" {
 }
 
 resource "aws_vpc_endpoint" "ecr_dkr" {
-  vpc_id              = aws_vpc.main.id
+  vpc_id              = aws_vpc.main.id #var.vpc_id  
   service_name        = "com.amazonaws.us-east-1.ecr.dkr"
   vpc_endpoint_type   = "Interface"
   private_dns_enabled = true
@@ -48,7 +48,7 @@ resource "aws_vpc_endpoint" "ecr_dkr" {
 
 # Update VPC endpoints to include private subnets (optional but recommended)
 resource "aws_vpc_endpoint" "secretsmanager" {
-  vpc_id              = aws_vpc.main.id
+  vpc_id              = aws_vpc.main.id # var.vpc_id
   service_name        = "com.amazonaws.us-east-1.secretsmanager"
   vpc_endpoint_type   = "Interface"
   private_dns_enabled = true
