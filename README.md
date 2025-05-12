@@ -1,4 +1,4 @@
-# this terraforms one Container for app, IGW (pub subnets) NAT (pte subnets)
+# this terraforms one Container for app, IGW (pub subnets) NAT (pte subnets) 
 modules/ecs/
 ├── main.tf [vpc, nat, alb, iam, security] # Primary ECS resources
 ├── variables.tf     # Input variables
@@ -21,7 +21,8 @@ aws ecs update-service --cluster nodejs-app-cluster --service nodejs-app-service
 # Manual cleanup sequence:
 terraform destroy
 
-# aws console cleanup:
+# aws console cleanup:  
+# ANOTHER TF WITH SEPARATE VPC AND ECS WOULD NOT NEED TO DO BELOW
 Delete load balancers
 Delete Load Balancing-Target groups
 
