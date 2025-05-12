@@ -15,15 +15,17 @@ docker push your-account-id.dkr.ecr.us-east-1.amazonaws.com/your-app-name:latest
 # new deployment in ECS
 aws ecs update-service --cluster nodejs-app-cluster --service nodejs-app-service --force-new-deployment
 
-Manual cleanup sequence:
+# Manual cleanup sequence:
+terraform destroy
 
+# aws console cleanup:
 Delete load balancers
 
 Delete NAT gateways
 
 Release Elastic IPs
 
-Delete subnets
+Delete subnets / associated network
 
 Delete route tables
 
