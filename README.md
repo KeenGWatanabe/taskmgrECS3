@@ -7,6 +7,9 @@ modules/ecs/
 
 # for production will spin up backen S3
 
+# in case module "ecs" cloudwatch error
+terraform import module.ecs.module.cluster.aws_cloudwatch_log_group.this[0] "/aws/ecs/nodejs-app-cluster"
+
 # build and push a new Docker image
 docker build -t your-app-name .
 docker tag your-app-name:latest your-account-id.dkr.ecr.us-east-1.amazonaws.com/your-app-name:latest
@@ -20,6 +23,7 @@ terraform destroy
 
 # aws console cleanup:
 Delete load balancers
+Delete Load Balancing-Target groups
 
 Delete NAT gateways
 

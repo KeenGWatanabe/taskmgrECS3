@@ -56,8 +56,12 @@ resource "aws_ecs_task_definition" "app" {
   }])
 }
 
+# unique ID for certain resources
+resource "random_id" "suffix" {
+  byte_length = 4
+}
 resource "aws_ecs_service" "app" {
-  name            = "nodejs-app-service"
+  name            = "nodejs-app-service-${random_id.suffix.hex}"
   cluster         = module.ecs.cluster_id
   task_definition = aws_ecs_task_definition.app.arn
   desired_count   = 1
@@ -76,6 +80,10 @@ resource "aws_ecs_service" "app" {
   }
 
   depends_on = [aws_lb_listener.app]
+  
+  lifecycle {
+    ignore_changes = [task_definition, desired_count]
+  }
 }
 
 resource "aws_ecr_repository" "app" {
