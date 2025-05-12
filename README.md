@@ -1,5 +1,5 @@
 modules/ecs/
-├── main.tf [vpc, alb, iam, security] # Primary ECS resources
+├── main.tf [vpc, alb, nat, iam, security] # Primary ECS resources
 ├── variables.tf     # Input variables
 ├── outputs.tf       # Output values
 └── README.md        # Documentation
