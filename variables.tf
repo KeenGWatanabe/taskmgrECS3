@@ -7,7 +7,7 @@ variable "MONGO_URI" {
 variable "name_prefix" {
   description = "Prefix for resource names"
   type        = string
-  default     = "taskmgr"  # Default value (override when needed)
+  default     = "taskmgrECS3"  # Default value (override when needed)
 }
 
 #terraform.tfvars | for another repo refactor split ECS and VPC repo separate

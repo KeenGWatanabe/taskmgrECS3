@@ -1,5 +1,5 @@
 resource "aws_lb" "app" {
-  name               = "nodejs-app-lb"
+  name               = "${var.name_prefix}-lb"
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.alb.id]
@@ -14,7 +14,7 @@ resource "aws_lb" "app" {
 }
 
 resource "aws_lb_target_group" "app" {
-  name        = "nodejs-app-tg"
+  name        = "${var.name_prefix}-tg"
   port        = 5000
   protocol    = "HTTP"
   vpc_id      = aws_vpc.main.id #var.vpc_id
